@@ -24,46 +24,44 @@ class animalsController extends Controller
             $animal->age = $request->age;
             $animal->image=$image_path.'/'.$image_name;
             $animal->save(); //Redirect::back();
-        
-        return redirect('/displayAnimalsRoute');
 
+            //return response()->json();
+            //return redirect('/displayAnimalsRoute');
+            return response()->json($animal)->with('Animal has been added successfully');
     }
+
      public function addAnimals()
         {
             return view('storeAnimals');
         }
 
     public function displayAnimals(){
-            $animals = Animals::all();
-            return view('displayAnimals', compact('animals',$animals));
+        $animals = Animals::all();
+        return view('displayAnimals', compact('animals',$animals));
         }
 
-
-    public function editAnimals(Request $request){   
-             Animals::where("id",$request->id)->update([
-                'farm' => $request->farm,
-                'name' => $request->name,
-                'type' => $request->type,
-                'color'=> $request->color,
-                'age'  => $request->age,
-            ]);
-            //$insertData->save();
-            return redirect('/displayAnimalsRoute');
-
+    public function editAnimals(Request $request){
+        Animals::where("id",$request->id)->update([
+        'farm' => $request->farm,
+        'name' => $request->name,
+        'type' => $request->type,
+        'color'=> $request->color,
+        'age'  => $request->age,
+    ]);
+        //$insertData->save();
+        return response()->json($request);
+        //return redirect('/displayAnimalsRoute');
     }
-    public function newAnimals($id)
-        {
+    public function newAnimals($id){
         $animal= Animals::find($id);
         return view('editAnimals', compact('animal', $animal));
     }
-    public function deleteAnimals($id)
-        {
-     $deleteAnimal = Animals::find($id);
-     $deleteAnimal->delete();
 
-     return redirect('displayAnimalsRoute');
-    }
-
-    
+    public function deleteAnimals($id){   
+        $deleteAnimal = Animals::find($id);
+        $deleteAnimal->delete();
+        return response()->json($deleteAnimal);
+        //return redirect('displayAnimalsRoute');
+    }    
 }
 

@@ -7,15 +7,16 @@
         }
 </style>
 
+
 <div class="card upper">
     <div class="card-header">
     <p class="h4 mb-4">Enter Animal details</p>  
 </div>
 
 <div class = "card-body">
-    <form action = "{{ route('storeAnimalsRoute')}}" method = 'post' enctype="multipart/form-data">
+    <form  id = "formid" enctype="multipart/form-data" >
+        {{-- action = "{{ route('storeAnimalsRoute')}}" --}}
             {{ csrf_field() }}
-
         <div class = "form-group">
             <label for="farm" class="col-md-4 control-label">Farm Name:</label>
             <input type="text" id="farmName" class="form-control mb-4" placeholder="Enter Farm's Name" name = "farm">
@@ -45,11 +46,26 @@
             <label for="image" class="col-md-4 control-label">Animal Image:</label>
             <input type="file" id="animalImage" class="form-control mb-4" name="image" accept = "image/*">
         </div>
-        
-        <!-- Sign in button -->
-        <button class="btn btn-info btn-block my-4" type="submit" >Submit Data</button>
+        <button name = "submit" class="btn btn-info btn-block my-4" type="submit" >Submit Data</button>
     </form>
 </div>
-
+<script>
+    $('#formid').submit(function (e){
+            var submit = $(this).val();
+            $.ajax({
+                type:"POST",
+                url:"{{ url('/storeAnimalsRoute') }}",
+                data:
+                "_token":"{{ csrf_token() }}",
+                "form_data":$('#formid').serialize(),
+                success:function(){
+                    console.log("data successfully added");
+                alert('successfully added'),
+                    },
+                }
+                dataType : 'json'
+            );
+        });
+</script>
 
 @endsection
