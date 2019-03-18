@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Animals;
+use App\Countries;
 use Illuminate\Support\Facades\Redirect;
 
 class animalsController extends Controller
@@ -31,9 +32,24 @@ class animalsController extends Controller
             return response()->json(array("message"=>$animal));
 
             //return response()->json();
-            //return redirect('/displayAnimalsRoute');       
+            //return redirect('/displayAnimalsRoute');
+            
+        
     }
+    public function addCountries(Request $request_c)
+    {
+        $country = $request_c->all();
+        $request_c = array();
+        parse_str($country['countriesModal'], $request_c);
+        $country = new Countries;
+            $country->name = $request_c['name'];
+            $country->city = $request_c['city'];
+            $country->village = $request_c['vilage'];
 
+            $country->save();
+            return view('country_form', compact('country',$country));
+
+    }
     public function addAnimals()
     {
         return view('storeAnimals');
