@@ -1,12 +1,5 @@
 @extends('index')
 @section('form')
-
-<style>
-        .upper {
-          margin-top: 40px;
-        }
-</style>
-
 <div class="card upper">
     <div class="card-header">
     <p class="h4 mb-4">Edit Animal details</p>  
@@ -51,6 +44,4 @@
         <button class="btn btn-info btn-block my-4" type="submit" >Submit Data</button>
     </form>
 </div>
-
-
 @endsection

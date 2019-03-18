@@ -46,26 +46,38 @@
             <label for="image" class="col-md-4 control-label">Animal Image:</label>
             <input type="file" id="animalImage" class="form-control mb-4" name="image" accept = "image/*">
         </div>
-        <button name = "submit" class="btn btn-info btn-block my-4" type="submit" >Submit Data</button>
+        <input name = "submit" class="btn btn-info btn-block my-4" id="btn_submit" type="submit" value="Save Animal"/>
+        <button type="button" class="btn btn-info btn-block my-4" data-toggle="modal" data-target="#favoritesModal">Edit Animal</button>
     </form>
 </div>
 <script>
-    $('#formid').submit(function (e){
+    $('#btn_submit').click(function (){
+        alert("hello")
             var submit = $(this).val();
             $.ajax({
                 type:"POST",
                 url:"{{ url('/storeAnimalsRoute') }}",
                 data:
+                {
                 "_token":"{{ csrf_token() }}",
                 "form_data":$('#formid').serialize(),
-                success:function(){
-                    console.log("data successfully added");
-                alert('successfully added'),
-                    },
+                },
+                success:function(message)
+                {
+                    alert("hi")
+                    alert(message);
+                    console.log(message);
+                },
+                
+                error: function(xhr, ajaxOptions, thrownError)
+                {
+                    alert(xhr.status);
+                    alert(thrownError);
                 }
-                dataType : 'json'
-            );
-        });
+
+            });  
+    });
 </script>
+
 
 @endsection
