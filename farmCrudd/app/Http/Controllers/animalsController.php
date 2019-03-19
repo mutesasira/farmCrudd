@@ -45,9 +45,9 @@ class animalsController extends Controller
             $country->name = $request_c['name'];
             $country->city = $request_c['city'];
             $country->village = $request_c['village'];
-            dd($country);
             $country->save();
-            return view('country_form', compact('country',$country));
+            return response()->json(array("message"=>$country));
+            dd($country);
 
     }
     public function addAnimals()

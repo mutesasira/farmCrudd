@@ -1,13 +1,6 @@
 @extends('index')
 @section('form')
 
-<style>
-    .button{
-        margin:10px;
-        padding:2%;
-    }
-</style>
-
 <div class = "well">
     <div class="x_title">
         <h2><center>Enter Animal Details </center></h2>
@@ -143,16 +136,13 @@
 
 <script>
 
-    {{--$('#modbtn').click(function (){
-        $('#countriesModal').modal('show');
-    })--}}
-
     $('#country_options').change(function(){
         
         $('#countriesModal').modal('show');
       });
     $('#btn_submit').click(function (){
-            var submit = $(this).val();
+        //var submit = $(this).val();
+        alert("working yes");
             $.ajax({
                 type:"POST",
                 url:"{{ url('/storeAnimalsRoute') }}",
@@ -175,30 +165,5 @@
 
             });  
     });
-
-    $('#addbtn').click(function (){
-        var submit = $(this).val();
-        $.ajax({
-            type:"POST",
-            url:"{{ url('/addCountriesRoute') }}",
-            data:
-            {
-            "_token":"{{ csrf_token() }}",
-            "form_data":$('#ctry_form').serialize(),
-            },
-            success:function(message)
-            {
-                alert("Data Submitted Successfully to database")
-                console.log(message);
-            },
-            
-            error: function(xhr, ajaxOptions, thrownError)
-            {
-                alert(xhr.status);
-                alert(thrownError);
-            }
-
-        });  
-});
 </script>
 @endsection
