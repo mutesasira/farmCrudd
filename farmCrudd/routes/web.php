@@ -20,3 +20,4 @@ Route::get('/displayAnimalsRoute', 'animalsController@displayAnimals')->name('di
 Route::get('/deleteAnimalsRoute/{id}', 'animalsController@deleteAnimals')->name('deleteAnimalsRoute');
 Route::post('/editAnimalsRoute', 'animalsController@editAnimals')->name('editAnimalsRoute');
 Route::get('/newAnimalsRoute/{id}', 'animalsController@newAnimals')->name('newAnimalsRoute');
+Route::post('/addCountriesRoute', 'animalsController@addCountries')->name('addCountriesRoute');

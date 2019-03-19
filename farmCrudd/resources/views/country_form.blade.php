@@ -1,5 +1,5 @@
 
-<form role="form" method="POST" action="">
+<form role="form" method="POST" action="" id = "ctry_form">
     <input type="hidden" name="_token" value="">
     <div class="form-group">
         <label class="control-label">Name:</label>
@@ -21,7 +21,8 @@
     </div>
     <div class="form-group">
         <div>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" id = "addbtn" class="btn btn-success">Add</button>
         </div>
     </div>
 </form>
+

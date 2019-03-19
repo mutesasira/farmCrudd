@@ -38,14 +38,15 @@ class animalsController extends Controller
     }
     public function addCountries(Request $request_c)
     {
-        $country = $request_c->all();dd($country);
+        dd($request_c);
+        $country = $request_c->all();//dd($country);
         parse_str($country['countriesModal'], $request_c);
 
         $country = new Countries;
             $country->name = $request_c['name'];
             $country->city = $request_c['city'];
-            $country->village = $request_c['vilage'];
-
+            $country->village = $request_c['village'];
+            dd($country);
             $country->save();
             return view('country_form', compact('country',$country));
 

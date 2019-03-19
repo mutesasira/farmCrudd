@@ -105,7 +105,8 @@
                             <label for="country" class = "col-md-4 control-label">Animal Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <select class = "form-control col-md-7 col-xs-12" id = "country_options" > 
-                                    <option value = "addcountry" >Add Country</option>
+                                    <option value = "addcountry" >select or add a country</option>
+                                    <option value = "addcountry"  >Add Country</option>
                                     
                                 </select>
                             </div>
@@ -120,7 +121,7 @@
                 {{--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">Add Country</button>--}}
                     <div class="button">
                         <input name = "submit" class="btn btn-success" id="btn_submit" type="submit" value="Save Animal"/>
-                        <button type="button" id = "modbtn" class="btn btn-danger">Cancel</button>
+                        <button type="button" id = "btn" class="btn btn-danger">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -142,10 +143,14 @@
 
 <script>
 
-    $('#modbtn').click(function (){
+    {{--$('#modbtn').click(function (){
         $('#countriesModal').modal('show');
-    })
+    })--}}
 
+    $('#country_options').change(function(){
+        
+        $('#countriesModal').modal('show');
+      });
     $('#btn_submit').click(function (){
             var submit = $(this).val();
             $.ajax({
@@ -170,5 +175,30 @@
 
             });  
     });
+
+    $('#addbtn').click(function (){
+        var submit = $(this).val();
+        $.ajax({
+            type:"POST",
+            url:"{{ url('/addCountriesRoute') }}",
+            data:
+            {
+            "_token":"{{ csrf_token() }}",
+            "form_data":$('#ctry_form').serialize(),
+            },
+            success:function(message)
+            {
+                alert("Data Submitted Successfully to database")
+                console.log(message);
+            },
+            
+            error: function(xhr, ajaxOptions, thrownError)
+            {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+
+        });  
+});
 </script>
 @endsection
