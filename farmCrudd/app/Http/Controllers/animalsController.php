@@ -38,7 +38,6 @@ class animalsController extends Controller
     }
     public function addCountries(Request $request_c)
     {
-        dd($request_c);
         $country = $request_c->all();//dd($country);
         parse_str($country['countriesModal'], $request_c);
 

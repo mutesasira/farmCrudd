@@ -105,7 +105,7 @@
                             <label for="country" class = "col-md-4 control-label">Animal Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <select class = "form-control col-md-7 col-xs-12" id = "country_options" > 
-                                    <option value = "addcountry" >select or add a country</option>
+                                    <option value = "select" >select or add a country</option>
                                     <option value = "addcountry"  >Add Country</option>
                                     
                                 </select>
