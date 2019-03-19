@@ -1,6 +1,14 @@
 @extends('index')
 @section('form')
-<div class="border border-0 border-dark" >
+
+<style>
+    .button{
+        margin:10px;
+        padding:2%;
+    }
+</style>
+
+<div class = "well">
     <div class="x_title">
         <h2><center>Enter Animal Details </center></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -96,26 +104,48 @@
                     <div>
                             <label for="country" class = "col-md-4 control-label">Animal Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <select class = "form-control col-md-7 col-xs-12" id = "country_options" >
+                                <select class = "form-control col-md-7 col-xs-12" id = "country_options" > 
+                                    <option value = "addcountry" >Add Country</option>
                                     
-                                    <option value = "addcountry" data-toggle="modal" data-target="#countriesModal">Add Country</option>
-
-
+                                </select>
                             </div>
                         <!--<input type="hidden" name="breeds" class="form-control col-md-7 col-xs-12" id = "breed">-->
                     </div>
                 </div>
         </div>
         <br />
-        <div >
-        {{--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">Add Country</button>--}}
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                <input name = "submit" class="btn btn-success" id="btn_submit" type="submit" value="Save Animal"/>
-                <button type="button" class="btn btn-danger">Cancel</button>
+        <div class = "text-center">
+            <div class = "row" >
+                <div  class = "form-group" >
+                {{--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">Add Country</button>--}}
+                    <div class="button">
+                        <input name = "submit" class="btn btn-success" id="btn_submit" type="submit" value="Save Animal"/>
+                        <button type="button" id = "modbtn" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
+</div>
+<div class='modal' id='countriesModal' tabindex='-1'  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Add country of origin </h1>
+            </div>
+            <div class="modal-body">
+                @include('country_form')
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+
+    $('#modbtn').click(function (){
+        $('#countriesModal').modal('show');
+    })
+
     $('#btn_submit').click(function (){
             var submit = $(this).val();
             $.ajax({
@@ -141,5 +171,4 @@
             });  
     });
 </script>
-</div>
 @endsection

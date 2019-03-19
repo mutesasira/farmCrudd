@@ -38,9 +38,9 @@ class animalsController extends Controller
     }
     public function addCountries(Request $request_c)
     {
-        $country = $request_c->all();
-        $request_c = array();
+        $country = $request_c->all();dd($country);
         parse_str($country['countriesModal'], $request_c);
+
         $country = new Countries;
             $country->name = $request_c['name'];
             $country->city = $request_c['city'];
@@ -51,7 +51,7 @@ class animalsController extends Controller
 
     }
     public function addAnimals()
-    {
+    { 
         return view('storeAnimals');
     }
 
