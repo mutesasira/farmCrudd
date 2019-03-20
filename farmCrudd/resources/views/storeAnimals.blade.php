@@ -79,7 +79,7 @@
                     <div>
                         <label for="breed" class="col-md-4 control-label">Animal Breed:</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                            <select class = "form-control col-md-7 col-xs-6" id = "breed_options" >
+                            <select class = "form-control col-md-7 col-xs-6" id = "breed" >
                                 <option value = "" selected disabled>Select Animal Breed</option>
                                 <option value = "angola">Angola</option>
                                 <option value = "ankole">Ankole</option>
@@ -97,9 +97,12 @@
                     <div>
                             <label for="country" class = "col-md-4 control-label">Animal Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <select class = "form-control col-md-7 col-xs-12" id = "country_options" > 
+                                <select name = "ctry" class = "form-control col-md-7 col-xs-12" id = "country_options" > 
                                     <option value = "select" >select or add a country</option>
                                     <option value = "addcountry"  >Add Country</option>
+                                    @foreach($countries as $country)
+                                    <option value = "{{ $country->id }}"> {{ $country->name }}</option>
+                                    @endforeach
                                     
                                 </select>
                             </div>
@@ -121,9 +124,9 @@
         </div>
     </form>
 </div>
-<div class='modal' id='countriesModal' tabindex='-1'  >
+<div class='modal' id='countriesModal' tabindex='-1' aria-hidden="true" >
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h1 class="modal-title">Add country of origin </h1>
             </div>
@@ -142,7 +145,6 @@
       });
     $('#btn_submit').click(function (){
         //var submit = $(this).val();
-        alert("working yes");
             $.ajax({
                 type:"POST",
                 url:"{{ url('/storeAnimalsRoute') }}",
@@ -157,6 +159,27 @@
                     console.log(message);
                 },
                 
+                error: function(xhr, ajaxOptions, thrownError)
+                {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });  
+    });
+
+    $('#ctry_form').submit(function (e){
+        e.preventDefault();
+
+            $.ajax({
+                type:"post",
+                url:'/addCountriesRoute',
+                data: $('#ctry_form').serialize(),
+                success:function(message)
+                {
+                    alert("Country Submitted")
+                    console.log(message.data);
+                },                
                 error: function(xhr, ajaxOptions, thrownError)
                 {
                     alert(xhr.status);

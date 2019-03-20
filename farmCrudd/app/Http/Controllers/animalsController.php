@@ -23,10 +23,12 @@ class animalsController extends Controller
         }*/   
         $animal = new Animals;
             $animal->farm = $request['farm'];
-            $animal->name = $request['name'];
+            $animal->name = $request['name']; 
             $animal->type = $request['type'];
             $animal->color = $request['color'];
             $animal->age = $request['age'];
+            $animal->breed = $request['breed'];
+            $animal->country = $request['country'];
             $animal->image=$image_path.'/'.$image_name;
             $animal->save(); //Redirect::back();
             return response()->json(array("message"=>$animal));
@@ -38,21 +40,23 @@ class animalsController extends Controller
     }
     public function addCountries(Request $request_c)
     {
-        $country = $request_c->all();//dd($country);
-        parse_str($country['countriesModal'], $request_c);
-
+        $country = $request_c->all();
+        //$country['id'] = Auth::id();
+        Countries::create($country);
+        /*
+        $country = $request_c->all();dd($country);
         $country = new Countries;
-            $country->name = $request_c['name'];
-            $country->city = $request_c['city'];
-            $country->village = $request_c['village'];
-            $country->save();
-            return response()->json(array("message"=>$country));
-            dd($country);
-
+        $country->name = $request_c['name'];
+        $country->city = $request_c['city'];
+        $country->village = $request_c['village'];
+        $country->save();*/
+        return;
     }
     public function addAnimals()
     { 
-        return view('storeAnimals');
+        $countries = Countries::all();
+        //dd($countries);
+        return view('storeAnimals', compact('countries'));
     }
 
     public function displayAnimals()

@@ -1,6 +1,5 @@
-
-<form role="form" method="POST" action="" id = "ctry_form">
-    <input type="hidden" name="_token" value="">
+<form id = "ctry_form">
+        {{ csrf_field() }}
     <div class="form-group">
         <label class="control-label">Name:</label>
         <div>
