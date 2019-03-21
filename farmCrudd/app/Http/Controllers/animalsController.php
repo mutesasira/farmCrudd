@@ -33,7 +33,7 @@ class animalsController extends Controller
             $animal->save(); //Redirect::back();
             return response()->json(array("message"=>$animal));
 
-            //return response()->json();
+            //return  response()->json();
             //return redirect('/displayAnimalsRoute');
     }
     public function addCountries(Request $request_c)
