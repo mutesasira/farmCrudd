@@ -35,8 +35,6 @@ class animalsController extends Controller
 
             //return response()->json();
             //return redirect('/displayAnimalsRoute');
-            
-        
     }
     public function addCountries(Request $request_c)
     {
@@ -60,7 +58,8 @@ class animalsController extends Controller
     }
 
     public function displayAnimals()
-    {
+    { 
+           
         $animals = Animals::all();
         return view('displayAnimals', compact('animals',$animals));
     }

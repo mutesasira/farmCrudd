@@ -1,7 +1,7 @@
 @extends('index')
 @section('form')
 
-<div class = "well">
+<div class = "well" style='margin-top: 2px;'>
     <div class="x_title">
         <h2><center>Enter Animal Details </center></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -79,7 +79,7 @@
                     <div>
                         <label for="breed" class="col-md-4 control-label">Animal Breed:</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                            <select class = "form-control col-md-7 col-xs-6" id = "breed" >
+                            <select class = "form-control col-md-7 col-xs-6" id = "breed" name = "breed" >
                                 <option value = "" selected disabled>Select Animal Breed</option>
                                 <option value = "angola">Angola</option>
                                 <option value = "ankole">Ankole</option>
@@ -97,7 +97,7 @@
                     <div>
                             <label for="country" class = "col-md-4 control-label">Animal Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <select name = "ctry" class = "form-control col-md-7 col-xs-12" id = "country_options" > 
+                                <select name = "name" class = "form-control col-md-7 col-xs-12" id = "country_options" > 
                                     <option value = "select" >select or add a country</option>
                                     <option value = "addcountry"  >Add Country</option>
                                     @foreach($countries as $country)
@@ -106,7 +106,6 @@
                                     
                                 </select>
                             </div>
-                        <!--<input type="hidden" name="breeds" class="form-control col-md-7 col-xs-12" id = "breed">-->
                     </div>
                 </div>
         </div>
@@ -140,8 +139,10 @@
 <script>
 
     $('#country_options').change(function(){
+        if($('#country_options').val() == 'addcountry' ){
+            $('#countriesModal').modal('show');
+        }
         
-        $('#countriesModal').modal('show');
       });
     $('#btn_submit').click(function (){
         //var submit = $(this).val();
