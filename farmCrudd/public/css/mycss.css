@@ -33,12 +33,12 @@
 #myFooter {
   background-color: #095a2b;
   color: white;
-  height: 150px;
-  margin-bottom: 20px;
+  height: 20px;
+  margin: 2px;
 }
 
  #myFooter .row {
-  margin-bottom: 100px;
+  margin-bottom: 2px;
 }
 
  #myFooter .info{

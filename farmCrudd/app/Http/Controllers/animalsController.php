@@ -16,7 +16,7 @@ class animalsController extends Controller
         parse_str($animal['form_data'], $request);
         //dd( $request->all());
         $image_name = time()."image.jpg";
-        $image_path = "images"; //dd($request->image);
+        $image_path = "images"; // dd($request->image);
         
         /*if($request->image !=null){
             $request->image->move($image_path,$image_name); //dd($image_path.'/'.$image_name); 

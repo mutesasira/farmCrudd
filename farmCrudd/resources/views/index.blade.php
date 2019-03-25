@@ -7,6 +7,7 @@
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -36,10 +37,9 @@
     <div id="page-content-wrapper">
       <div class = "navbarr">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-          <button class="btn btn-success" id="menu-toggle">Expand Menu</button>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <i class="fa fa-bars fa-3x" id = "menu-toggle"></i>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
           </button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,11 +79,10 @@
         <div class="container-fluid">
           @yield('form')
           <div class="content">
-              <footer id="myFooter">   
-                <div >
-                  <p><center>© 2017 Copyright Myfarm </center></p>
-                </div>
-              </footer>
+          <footer class="page-footer font-small blue">
+            <div class="footer-copyright text-center py-3">© 2019 myFarm
+            </div>
+          </footer>
           </div>
       </div>
 
