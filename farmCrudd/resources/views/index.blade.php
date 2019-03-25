@@ -79,10 +79,11 @@
         <div class="container-fluid">
           @yield('form')
           <div class="content">
-          <footer class="page-footer font-small blue">
-            <div class="footer-copyright text-center py-3">© 2019 myFarm
-            </div>
-          </footer>
+              <footer id="myFooter">   
+                <div >
+                  <p><center>© 2017 Copyright Myfarm </center></p>
+                </div>
+              </footer>
           </div>
       </div>
 

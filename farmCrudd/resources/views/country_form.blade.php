@@ -1,4 +1,4 @@
-<form id = "ctry_form">
+<form id = "ctry_form" >
         {{ csrf_field() }}
     <div class="form-group">
         <label class="control-label">Name:</label>

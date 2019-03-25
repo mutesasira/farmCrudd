@@ -31,22 +31,21 @@
 }
 
 #myFooter {
-  background-color: #095a2b;
-  color: white;
-  height: 20px;
-  margin: 2px;
+  color: black;
+  height: 50px;
+  margin-top: 20px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
 }
 
  #myFooter .row {
   margin-bottom: 2px;
 }
 
- #myFooter .info{
-  text-align: justify; 
-  color: #afb0b1;
-}
 
- #myFooter ul {
+#myFooter ul {
   list-style-type: none;
   padding-left: 0;
   line-height: 1.7;
@@ -57,10 +56,6 @@
   color: white;
   font-weight: bold;
   margin-top: 30px;
-}
-
- #myFooter .logo{
-  margin-top: 10px;
 }
 
  #myFooter .second-bar .logo a{
